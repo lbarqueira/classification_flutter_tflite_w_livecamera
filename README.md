@@ -7,10 +7,10 @@ __On-Device Machine Learning__ is a technique to train and run a Deep Learning m
 Usage in this specific case: __Image Classification__
 
 Other usages to come in future demos:
-__Object Detection__
-__Semantic Segmentation__
-__Pose Estimation__
-__Smart Reply__
+- __Object Detection__
+- __Semantic Segmentation__
+- __Pose Estimation__
+- __Smart Reply__
 
 ## Model
 
