@@ -1,16 +1,23 @@
 # classification_flutter_tflite
 
-A new Flutter project.
+Flutter Deep Learning project based on [On-Device Machine Learning with Flutter - Kshitiz Rimal (Flutter Week)](https://www.youtube.com/watch?v=mlPAcndoZHU).
 
-## Getting Started
+__On-Device Machine Learning__ is a technique to train and run a Deep Learning models on the edge devices such as Smartphones, IoT Devices and devices without an OS like Microcontroller units (MCU). It's the future of AI inference. This presentation covers two aspects, first how to easily built on-device machine learning models using Tensorflow 2.0 and __Tensorflow Lite__ and secondly, how easy it is to construct and run flutter app that uses this model on both iOS and Android Devices. This presentation goes step by step procedure that will help mobile developers using Flutter to easily super charge their apps with Tensorflow Lite models. This presentation will walkthrough various case studies and explore state of the art machine learning models that can be used with Flutter and Tensorflow Lite.
 
-This project is a starting point for a Flutter application.
+Usage in this specific case: __Image Classification__
 
-A few resources to get you started if this is your first Flutter project:
+Other usages to come in future demos:
+__Object Detection__
+__Semantic Segmentation__
+__Pose Estimation__
+__Smart Reply__
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Model
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+https://gist.github.com/lbarqueira/f92500e673eaa0cb4b09c1781e3680de
+
+See labels.txt in the repo.
+
+## Screenshot
+
+To be included....
