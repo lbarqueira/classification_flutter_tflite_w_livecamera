@@ -1,16 +1,19 @@
-# classification_flutter_tflite
+# classification_flutter_tflite_with_livecamera
+Flutter Deep Learning project based on documents:
 
-Flutter Deep Learning project based on [On-Device Machine Learning with Flutter - Kshitiz Rimal (Flutter Week)](https://www.youtube.com/watch?v=mlPAcndoZHU).
+[GitHub Repository: mobile-realtime-detection](https://github.com/AbdulRashidReshamwala/mobilnet-realtime-detection)
 
-__On-Device Machine Learning__ is a technique to train and run a Deep Learning models on the edge devices such as Smartphones, IoT Devices and devices without an OS like Microcontroller units (MCU). It's the future of AI inference. This presentation covers two aspects, first how to easily built on-device machine learning models using Tensorflow 2.0 and __Tensorflow Lite__ and secondly, how easy it is to construct and run flutter app that uses this model on both iOS and Android Devices. This presentation goes step by step procedure that will help mobile developers using Flutter to easily super charge their apps with Tensorflow Lite models. This presentation will walkthrough various case studies and explore state of the art machine learning models that can be used with Flutter and Tensorflow Lite.
+[Real-time Image classification using Tensorflow Lite and Flutter](https://medium.com/analytics-vidhya/real-time-image-classification-using-tensorflow-lite-and-flutter-878e3700607a)
 
-Usage in this specific case: __Image Classification__
+__On-Device Machine Learning__,__Tensorflow Lite__,__Image Classification__
 
-Other usages to come in future demos:
-- __Object Detection__
-- __Semantic Segmentation__
-- __Pose Estimation__
-- __Smart Reply__
+## Important reference to be aware in this specific project:
+- [onResume() and onPause() for widgets in Flutter](https://dev.to/pedromassango/onresume-and-onpause-for-widgets-on-flutter-27k2)
+
+## Packages
+
+- tflite
+- camera
 
 ## Model
 
