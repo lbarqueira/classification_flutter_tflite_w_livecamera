@@ -89,7 +89,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData.dark(),
       home: Scaffold(
         body: controller.value.isInitialized
-            ? MainScreen(controller: controller, preds: preds)
+            ? _MainScreen(controller: controller, preds: preds)
             : Container(
                 child: Center(
                   child: CircularProgressIndicator(),
@@ -100,8 +100,8 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-class MainScreen extends StatelessWidget {
-  const MainScreen({@required this.controller, @required this.preds});
+class _MainScreen extends StatelessWidget {
+  const _MainScreen({@required this.controller, @required this.preds});
 
   final CameraController controller;
   final List preds;
@@ -111,10 +111,10 @@ class MainScreen extends StatelessWidget {
     return Stack(
       children: [
         // shows the camera preview
-        CameraScreen(controller: controller),
+        _CameraScreen(controller: controller),
         // shows the predictions
         preds.length > 0
-            ? PredictionsWidget(preds: preds)
+            ? _PredictionsWidget(preds: preds)
             : Center(
                 child: CircularProgressIndicator(),
               ),
@@ -123,8 +123,8 @@ class MainScreen extends StatelessWidget {
   }
 }
 
-class PredictionsWidget extends StatelessWidget {
-  const PredictionsWidget({@required this.preds});
+class _PredictionsWidget extends StatelessWidget {
+  const _PredictionsWidget({@required this.preds});
 
   final List preds;
 
@@ -232,28 +232,8 @@ class PredictionsWidget extends StatelessWidget {
   }
 }
 
-//class CameraScreen extends StatelessWidget {
-//  const CameraScreen({
-//    @required this.deviceData,
-//    @required this.controller,
-//  });
-
-//  final MediaQueryData deviceData;
-//  final CameraController controller;
-
-//  @override
-//  Widget build(BuildContext context) {
-//    return SizedBox(
-//      height: deviceData.size.height * 0.7,
-//      child: AspectRatio(
-//          aspectRatio: controller.value.aspectRatio,
-//          child: CameraPreview(controller)),
-//    );
-//  }
-//}
-
-class CameraScreen extends StatelessWidget {
-  const CameraScreen({@required this.controller});
+class _CameraScreen extends StatelessWidget {
+  const _CameraScreen({@required this.controller});
 
   final CameraController controller;
 
@@ -278,6 +258,8 @@ class CameraScreen extends StatelessWidget {
             child: OverflowBox(
               alignment: Alignment.center,
               child: FittedBox(
+                alignment: Alignment
+                    .center, // introduced do center the camera screen preview
                 fit: BoxFit.fitHeight,
                 child: Container(
                   width: size,
