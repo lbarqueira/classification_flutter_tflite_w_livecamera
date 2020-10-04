@@ -13,7 +13,7 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   TensorflowService tensorflowService = TensorflowService();
 
   CameraController controller;
@@ -31,6 +31,8 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+
+    WidgetsBinding.instance.addObserver(this);
 
     startUp();
 
@@ -72,7 +74,51 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      // starts camera and then loads the tensorflow model
+      startUp();
+      controller = CameraController(widget.camera, ResolutionPreset.high);
+
+      controller.initialize().then(
+        (_) {
+          if (!mounted) {
+            return;
+          }
+          setState(() {});
+          controller.startImageStream(
+            (CameraImage img) {
+              if (!isDetecting) {
+                isDetecting = true;
+                delayed(); // TODO: averiguar a real necessidade
+                Tflite.runModelOnFrame(
+                  bytesList: img.planes.map((plane) {
+                    return plane.bytes;
+                  }).toList(), // required
+                  imageHeight: img.height,
+                  imageWidth: img.width,
+                  numResults: 3,
+                ).then(
+                  (recognitions) {
+                    setState(() {
+                      preds = recognitions;
+                    });
+                    // setRecognitions(recognitions, img.height, img.width);
+                    print(recognitions);
+                    isDetecting = false;
+                  },
+                );
+              }
+            },
+          );
+        },
+      );
+    }
+  }
+
+  @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     controller?.dispose();
     Tflite.close();
     super.dispose();
